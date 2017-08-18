@@ -151,7 +151,7 @@ var GAME_LEVELS = [
   ]
 ];
 var actorChars = {};
-var scale = 60;
+var scale = 30;
 var maxStep = 0.05;
 var wobbleSpeed = 8;
 var wobbleDist = 0.07;
@@ -494,11 +494,6 @@ function trackKeys(codes) {
   }
   addEventListener('keydown', handler);
   addEventListener('keyup', handler);
-
-  pressed.unregister = function () {
-    removeEventListener('keydown', handler);
-    removeEventListener('keyup', handler);
-  };
   return pressed;
 }
 
@@ -536,6 +531,8 @@ function runLevel(level, Display, andThen) {
 }
 
 function runGame(plans, Display) {
+  debugger;
+
   function startLevel(n) {
     runLevel(new Level(plans[n]), Display, function (status) {
       if (status === 'lost') {
