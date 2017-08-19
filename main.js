@@ -558,6 +558,7 @@ function runGame(plans, Display) {
           console.log('Game Over');
           livesDiv.textContent = 'Game Over';
           livesDiv.style.color = '#fff';
+          livesDiv.style.textAlign = 'center';
         } else {
           startLevel(n);
         }
