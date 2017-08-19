@@ -34,15 +34,16 @@ body {
 }
 
 .lava {
-  background: rgb(255, 100, 100);
+  background: $red;
 }
 
 .wall {
-  background: $white;
+  background: $silver;
 }
 
 .coin {
-  background: rgb(241, 229, 89);
+  background: $yellow;
+  border-radius: 50%;
 }
 
 .lost .player {
@@ -55,5 +56,5 @@ body {
 }
 
 .player {
-  background: rgb(64, 64, 64);
+  background: lighten($navy, 10%);
 }
