@@ -540,23 +540,24 @@ function drawLives() {
 
 function minusLife() {
   var life = document.querySelector('.fa-heart');
-  var lives = 5;
-  if (life && lives === 1) {
-    document.getElementById('lives').textContent = "Game Over";
-  } else if (life) {
+  if (life) {
     life.parentNode.removeChild(life);
-    lives -= 1;
   }
 }
 
 function runGame(plans, Display) {
+  var lives = 5;
+
   function startLevel(n) {
     runLevel(new Level(plans[n]), Display, function (status) {
+      var livesDiv = document.getElementById('lives');
       if (status === 'lost') {
         minusLife();
-        if (document.getElementById('lives').textContent === 'Game Over') {
-          startLevel(0);
+        lives -= 1;
+        if (lives === 0) {
           console.log('Game Over');
+          livesDiv.textContent = 'Game Over';
+          livesDiv.style.color = '#fff';
         } else {
           startLevel(n);
         }
