@@ -530,13 +530,29 @@ function runLevel(level, Display, andThen) {
   });
 }
 
-function runGame(plans, Display) {
-  debugger;
+function drawLives() {
+  var cont = document.getElementById('lives');
+  var i;
+  for (i = 0; i < 5; i += 1) {
+    cont.appendChild(elt('i', 'fa fa-heart'));
+  }
+}
 
+function minusLife() {
+  var lives = document.querySelector('.fa-heart');
+  if (lives) {
+    lives.parentNode.removeChild(lives);
+  } else {
+    return true;
+  }
+}
+
+function runGame(plans, Display) {
   function startLevel(n) {
     runLevel(new Level(plans[n]), Display, function (status) {
       if (status === 'lost') {
         startLevel(n);
+        minusLife();
       } else if (n < plans.length - 1) {
         startLevel(n + 1);
       } else {
@@ -545,6 +561,8 @@ function runGame(plans, Display) {
     });
   }
   startLevel(0);
+  drawLives();
 }
+
 arrows = trackKeys(arrowCodes);
 runGame(GAME_LEVELS, DOMDisplay);

@@ -58,3 +58,10 @@ body {
 .player {
   background: lighten($navy, 10%);
 }
+
+#lives {
+  padding: 1%;
+  color: $red;
+  position: relative;
+  top: 0;
+}
