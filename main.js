@@ -539,11 +539,13 @@ function drawLives() {
 }
 
 function minusLife() {
-  var lives = document.querySelector('.fa-heart');
-  if (lives) {
-    lives.parentNode.removeChild(lives);
-  } else {
-    return true;
+  var life = document.querySelector('.fa-heart');
+  var lives = 5;
+  if (life && lives === 1) {
+    document.getElementById('lives').textContent = "Game Over";
+  } else if (life) {
+    life.parentNode.removeChild(life);
+    lives -= 1;
   }
 }
 
@@ -551,8 +553,13 @@ function runGame(plans, Display) {
   function startLevel(n) {
     runLevel(new Level(plans[n]), Display, function (status) {
       if (status === 'lost') {
-        startLevel(n);
         minusLife();
+        if (document.getElementById('lives').textContent === 'Game Over') {
+          startLevel(0);
+          console.log('Game Over');
+        } else {
+          startLevel(n);
+        }
       } else if (n < plans.length - 1) {
         startLevel(n + 1);
       } else {
