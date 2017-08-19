@@ -18,7 +18,6 @@ body {
 .game {
   overflow: hidden;
   max-width: 100%;
-  min-height: 100%;
   position: relative;
 }
 
@@ -31,6 +30,7 @@ body {
 .background {
   background: darken($aqua, 10%);
   border-spacing: 0;
+  max-height: 100%;
 }
 
 .lava {
@@ -58,7 +58,6 @@ body {
 .player {
   background: lighten($navy, 10%);
 }
-
 
 #lives {
   padding: 1%;
